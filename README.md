@@ -71,5 +71,41 @@ Month 4: Production polish and documentation
 ⏳ Data ingestion coming next  
 🛠️ Future: modeling, deployment, pipelines
 
+## Progress
+
+### Day 1 – Project Foundation
+- Created local project structure and initialized Git repository.
+- Set up Python virtual environment and `requirements.txt` to make the project reproducible.
+- Connected local repo to GitHub and pushed initial commit.
+- Wrote project README with goal, architecture outline, and 4-month roadmap.
+
+**Why this matters:**  
+This establishes a clean, professional foundation. The project can be cloned and rebuilt on another machine, and the repo already communicates intent and scope to reviewers.
+
+---
+
+### Day 2 – Data Modeling (SQL Schema)
+- Designed a normalized SQL schema for:
+  - `patients` (demographics)
+  - `encounters` (hospital visits)
+  - `diagnoses` (clinical codes)
+  - `outcomes` (readmission labels)
+- Added foreign keys to enforce relationships between tables.
+- Committed `sql/schema.sql` to version control.
+
+**Why this matters:**  
+Separating entities prevents duplicated patient data, reduces inconsistency, and makes joins and audits reliable. This structure mirrors real EHR databases and reduces data leakage risk in ML pipelines.
+
+---
+
+### Day 3 – Database Wiring (ETL Backbone)
+- Set up local PostgreSQL database for the project.
+- Added Python database connector dependency.
+- Created an ETL initialization script to execute `sql/schema.sql` from Python.
+- Verified tables were created successfully in the database.
+
+**Why this matters:**  
+This proves the system is wired end-to-end: Python can control the database schema. It makes the pipeline reproducducible and ready for real data ingestion instead of manual setup.
+
 
 
