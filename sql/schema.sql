@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS outcomes (
     readmission_90day BOOLEAN
 );
 -- Indexes to speed up joins on foreign keys
+-- I added indexes on foreign keys used in joins because feature extraction and cohort queries rely heavily on joins. This prevents full table scans as the dataset grows and reflects production performance considerations.
 CREATE INDEX IF NOT EXISTS idx_encounters_patient_id 
 ON encounters(patient_id);
 
