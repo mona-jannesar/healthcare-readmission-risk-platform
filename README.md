@@ -108,4 +108,29 @@ Separating entities prevents duplicated patient data, reduces inconsistency, and
 This proves the system is wired end-to-end: Python can control the database schema. It makes the pipeline reproducducible and ready for real data ingestion instead of manual setup.
 
 
+### Day 4 – Data Ingestion and Profiling
+
+**Dataset:** Diabetes 130-US hospitals (Kaggle)
+
+**Key Observations:**
+- ~100k encounters, ~50 columns
+- Target label `readmitted` has multiple categories (e.g., <30, >30, NO)
+- Significant missingness in race and some diagnosis-related fields
+- Categorical IDs used for admission/discharge types (require mapping)
+- Strong class imbalance in readmission label
+
+
+- Raw dataset downloaded to `data/raw/diabetic_data.csv`
+- Ingestion script `etl/ingest.py` created
+- Script prints:
+  - dataset shape
+  - column names
+  - missing value counts
+
+  **Schema Mapping Plan:**
+- Raw columns mapped to normalized SQL schema via `etl/schema_mapping.py`
+- Cleaning and normalization planned before loading into SQL
+
+This step confirms we can load and inspect raw data programmatically.
+source of data https://www.kaggle.com/datasets/brandao/diabetes?resource=download
 
