@@ -134,3 +134,19 @@ This proves the system is wired end-to-end: Python can control the database sche
 This step confirms we can load and inspect raw data programmatically.
 source of data https://www.kaggle.com/datasets/brandao/diabetes?resource=download
 
+### Day 5 – Data Cleaning and Schema Mapping
+
+We built `etl/clean_data.py` to transform the raw Kaggle diabetes dataset into cleaned CSV outputs that match our SQL schema.
+
+This script performs:
+- removal of invalid records,
+- normalization of categorical values,
+- derivation of binary readmission labels,
+- mapping to patient, encounter, and outcome tables.
+
+Output cleaned files are saved to:
+- `data/processed/patients.csv`
+- `data/processed/encounters.csv`
+- `data/processed/outcomes.csv`
+
+
