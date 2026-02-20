@@ -1,7 +1,7 @@
 -- Table to store patient demographics
 CREATE TABLE IF NOT EXISTS patients (
     patient_id SERIAL PRIMARY KEY,
-    gender VARCHAR(10),
+    gender VARCHAR(10) CHECK (gender IN ('Male', 'Female', 'Other') OR gender IS NULL),
     age_group VARCHAR(20),
     race VARCHAR(50)
 );
@@ -13,9 +13,9 @@ CREATE TABLE IF NOT EXISTS encounters (
     admission_type VARCHAR(50),
     discharge_disposition VARCHAR(50),
     admission_source VARCHAR(50),
-    time_in_hospital INTEGER,
-    num_lab_procedures INTEGER,
-    num_medications INTEGER,
+    time_in_hospital INTEGER CHECK (time_in_hospital >= 0),
+    num_lab_procedures INTEGER CHECK (num_lab_procedures >= 0),
+    num_medications INTEGER CHECK (num_medications >= 0),
     readmitted BOOLEAN
 );
 
@@ -32,3 +32,9 @@ CREATE TABLE IF NOT EXISTS outcomes (
     readmission_30day BOOLEAN,
     readmission_90day BOOLEAN
 );
+-- Indexes to speed up joins on foreign keys
+CREATE INDEX IF NOT EXISTS idx_encounters_patient_id 
+ON encounters(patient_id);
+
+CREATE INDEX IF NOT EXISTS idx_diagnoses_encounter_id 
+ON diagnoses(encounter_id);
