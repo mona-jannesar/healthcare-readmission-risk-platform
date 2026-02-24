@@ -10,6 +10,7 @@ cur = conn.cursor()
 
 schema_path = Path(__file__).resolve().parents[1] / "sql" / "schema.sql"
 
+#"r opens the file in read mode, and f is the file handle used to read its contents. Using with ensures the file is automatically closed, which prevents resource leaks and makes the script safe and reproducible
 with open(schema_path, "r") as f:
     schema_sql = f.read()
 

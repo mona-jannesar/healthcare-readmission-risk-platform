@@ -149,4 +149,10 @@ Output cleaned files are saved to:
 - `data/processed/encounters.csv`
 - `data/processed/outcomes.csv`
 
+### Day 6 – Database Load and Integrity Validation
+
+- Wrote `etl/load_to_db.py` to batch load cleaned CSVs into PostgreSQL.
+- Verified row counts in each table after load.
+- Checked basic referential integrity: no orphan encounters.
+
 

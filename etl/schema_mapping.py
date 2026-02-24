@@ -1,5 +1,6 @@
 SCHEMA_MAPPING = {
     "patients": {
+        "patient_id": "patient_nbr",
         "gender": "gender",
         "age_group": "age",
         "race": "race"
@@ -12,7 +13,7 @@ SCHEMA_MAPPING = {
         "discharge_disposition": "discharge_disposition_id",
         "admission_source": "admission_source_id"
     },
-    "outcomes": {
-        "readmission_30day": "readmitted"
-    }
+   #"outcomes": {
+    #   "readmission_30day": "readmitted"
+   #}
 }

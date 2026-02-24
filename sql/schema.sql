@@ -1,5 +1,5 @@
 -- Table to store patient demographics
-CREATE TABLE IF NOT EXISTS patients (
+CREATE TABLE patients (
     patient_id SERIAL PRIMARY KEY,
     gender VARCHAR(10) CHECK (gender IN ('Male', 'Female', 'Other') OR gender IS NULL),
     age_group VARCHAR(20),
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS patients (
 );
 
 -- Table for encounters (one row per hospital visit)
-CREATE TABLE IF NOT EXISTS encounters (
+CREATE TABLE encounters (
     encounter_id SERIAL PRIMARY KEY,
     patient_id INTEGER REFERENCES patients(patient_id),
     admission_type VARCHAR(50),
@@ -20,14 +20,14 @@ CREATE TABLE IF NOT EXISTS encounters (
 );
 
 -- Table for clinical diagnoses
-CREATE TABLE IF NOT EXISTS diagnoses (
+CREATE TABLE diagnoses (
     diag_id SERIAL PRIMARY KEY,
     encounter_id INTEGER REFERENCES encounters(encounter_id),
     diagnosis_code VARCHAR(20)
 );
 
 -- Table for target labels
-CREATE TABLE IF NOT EXISTS outcomes (
+CREATE TABLE outcomes (
     encounter_id INTEGER PRIMARY KEY REFERENCES encounters(encounter_id),
     readmission_30day BOOLEAN,
     readmission_90day BOOLEAN
