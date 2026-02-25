@@ -156,3 +156,12 @@ Output cleaned files are saved to:
 - Checked basic referential integrity: no orphan encounters.
 
 
+### Day 7 – Feature Engineering via SQL
+
+We created a database `VIEW` named `ml_feature_view` that joins the core tables into a flat, ML-ready dataset. This view contains:
+
+- **Demographics:** gender, age_group, race  
+- **Clinical features:** time_in_hospital, num_lab_procedures, num_medications  
+- **Labels:** readmission_30day, readmission_90day
+
+The SQL logic lives in `sql/features.sql` and is the foundation for the modeling pipeline.
