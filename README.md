@@ -165,3 +165,10 @@ We created a database `VIEW` named `ml_feature_view` that joins the core tables 
 - **Labels:** readmission_30day, readmission_90day
 
 The SQL logic lives in `sql/features.sql` and is the foundation for the modeling pipeline.
+
+### Day 8 – Baseline Model Training
+
+- Extracted `ml_feature_view` from PostgreSQL into Pandas.
+- Trained a baseline logistic regression model to predict 30-day readmission.
+- Evaluated ROC-AUC and classification metrics.
+- This establishes a performance baseline for future models.
